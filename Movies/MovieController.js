@@ -1,5 +1,6 @@
 // Funcion Completa
 
+const { query } = require("express");
 const model=require("./MovieModels")
 
 //Añadir peliculas en el body a la BBDD
@@ -12,13 +13,11 @@ module.exports.createMovie = async (req,res)=>{
 
 //Buscar por titulo e id
 
+
 module.exports.SearchMovie = async (req,res)=>{
-    const Search=(films)=>{
-        let search =[];
-        for (let i = 0; i < movieArr.length; i++){
-            if(model.movieArr.includes(films)){
-                
-            }
-        }
-    }
+    if(req.query.title) query.title = req.query.title;
+    if(req.query.id) query.id = req.query.id;
+    if(req.query.gender) query.gender = req.query.gender;
+    const result = await model.find(query);
+    res.json(result);
 }
