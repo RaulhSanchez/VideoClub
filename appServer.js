@@ -1,8 +1,11 @@
 const { Router } = require("express");
 const express = require("express");
 const mongoose = require("mongoose")
+const jwt = require("jsonwebtoken")
 const app=express();
-const movieRouter = require("./Movies/MovieRouter")
+const movieRouter = require("./Movies/MovieRouter");
+const res = require("express/lib/response");
+
 
 mongoose.connect('mongodb://localhost:27017/videoclub',{
     useNewUrlParser: true,
@@ -18,3 +21,6 @@ app.use("/movie", movieRouter); // Acceso a carpeta movie
 
 // Iniciar servidor
 app.listen(3000,()=>console.log("Servidor levantado en el puerto 3000"));
+
+
+

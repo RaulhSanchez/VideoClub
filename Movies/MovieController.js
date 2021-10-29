@@ -21,9 +21,3 @@ module.exports.SearchMovie = async (req,res)=>{
     const result = await model.find(query);
     res.json(result);
 }
-Mongoose es un O.D.M (Object Document Modeling) para MongoDB en NodeJs con el que
-podemos crear Schemas para tipado de datos, esquematizar, validar, crear métodos y
-middlewares.
-Mongoose es un O.D.M (Object Document Modeling) para MongoDB en NodeJs con el que
-podemos crear Schemas para tipado de datos, esquematizar, validar, crear métodos y
-middlewares.
