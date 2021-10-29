@@ -8,7 +8,7 @@ const controller = require("./MovieController");
 
 
 
-router.get("/",(req,res)=>res.json({All: movieArr[req.params.id]})) // Buscar por Id
+//router.get("/",(req,res)=>res.json({All: movieArr[req.params.id]})) // Buscar por Id
 
 router.post("/",controller.createMovie) // Ruta para añadir peliculas en el body a la BBDD
 

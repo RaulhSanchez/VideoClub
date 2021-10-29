@@ -15,9 +15,10 @@ module.exports.createMovie = async (req,res)=>{
 
 
 module.exports.SearchMovie = async (req,res)=>{
-    if(req.query.title) query.title = req.query.title;
-    if(req.query.id) query.id = req.query.id;
-    if(req.query.gender) query.gender = req.query.gender;
+    /*if(req.query.title) query.title = req.query.title;
+    if(req.query.directo) query.directoe = req.query.director;
+    if(req.query.gender) query.gender = req.query.gender;*/
+    if(req.query.title)query.title=req.query.find;
     const result = await model.find(query);
     res.json(result);
 }
