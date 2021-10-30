@@ -12,12 +12,19 @@ module.exports.CreateMovie = async (req,res)=>{
     res.json(movie)
 }
 
-//Todas las peliculas
+//Peliculas por titulo
 
 
-module.exports.AllMovies = async (req,res)=>{
+module.exports.SearchMovieByTitle = async (req,res)=>{
     const query={};
     if(req.query.title)query.title =req.query.title;
     const rest =await model.find(query);
     res.json(rest)
 }
+/*
+module.exports.SearchMovieById = async (req,res)=>{
+    const query={};
+    if(req.query.id)query.id =req.query.id;
+    const rest =await model.find(query);
+    res.json(rest)
+}*/
