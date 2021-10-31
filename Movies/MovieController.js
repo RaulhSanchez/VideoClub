@@ -21,10 +21,10 @@ module.exports.SearchMovieByTitle = async (req,res)=>{
     const rest =await model.find(query);
     res.json(rest)
 }
-/*
+
 module.exports.SearchMovieById = async (req,res)=>{
     const query={};
     if(req.query.id)query.id =req.query.id;
     const rest =await model.find(query);
     res.json(rest)
-}*/
+}

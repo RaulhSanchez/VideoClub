@@ -40,7 +40,7 @@ module.exports.DeleteUser = async (req,res)=>{
         if(deleteUser === null){
             res.send({result:"email o contraseña incorrecto"})
         }
-        res.send({deleteUser})       
+        res.send({})       
     }catch{
         res.send({result:"not found"})
     }
