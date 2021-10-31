@@ -30,7 +30,7 @@ app.listen(3000,()=>console.log("Servidor levantado en el puerto 3000"));
     //User.find({}).populate("company").populate("invitetr");
     
     //comprobar que en la req tengo un mail + pass
-    // si no lo tengo retorno erro
+    // si no lo tengo retorno error
     //busco al usuario que coincide con el mail
     //comparo la pass con la del usuario
     //si esta mal le mando a la mierda

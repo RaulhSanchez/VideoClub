@@ -6,4 +6,9 @@ const controller = require("./UserController");
 
 router.post("/",controller.CreateUser) // Crear usuario
 
+router.get("/",controller.LogIn) // Logearse
+
+router.delete("/",controller.DeleteUser) // Eliminar usuario
+
+
 module.exports = router;
