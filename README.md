@@ -48,6 +48,76 @@ module.exports.SearchMovieByTitle = async (req,res)=>{
 
 ...
 
+Es posible ralizar una busqueda de las películas por el ID de la base de datos como se muestra en el siguiente método:
+
+...
+
+module.exports.SearchMovieByTitle = async (req,res)=>{
+    const query={};
+    if(req.query.title)query.title = req.query.title;
+    if(req.query.director)query.director = req.query.director;
+    if(req.query.gender)query.gender = req.query.gender;
+    const rest = await model.find(query);
+    res.json(rest);
+}
+
+
+...
+
+
+***
+
+## Usuario
+
+En el apartado del usuario se permite hacer desde un Login en la applicación,cambiar el nombre del usuari o eliminar la cuenta y todos los datos.
+
+Es posible registrarse como nuevo usuario añadiendo los datos que se piden en el Schema por el body, de postan como ha sido el caso en esta aplicación.
+
+Para ello se ha utilizado el siguiente método:
+
+...
+
+
+module.exports.SearchMovieByTitle = async (req,res)=>{
+    const query={};
+    if(req.query.title)query.title = req.query.title;
+    if(req.query.director)query.director = req.query.director;
+    if(req.query.gender)query.gender = req.query.gender;
+    const rest = await model.find(query);
+    res.json(rest);
+}
+
+
+...
+
+Los datos requeridos en este caso son: 
+
+1. Nombre
+2. Rol (que por defecto es el de Usuario)
+3. Email
+4. Contraseña (mínimo 8 dígitos)
+
+
+Para la funcionalidad de cambiar el nombre, se requiere añadir el cambio por el body con el siguiente método:
+
+...
+
+
+module.exports.ChangeName = async (req,res)=>{
+    try{
+        const changeName = await UserModels.findByIdAndUpdate({_id:req.params.id},{name:req.body.name});
+        console.log(changeName)
+        res.send("El nombre se ha cambiado");
+    }catch{
+        res.send("error");
+    } 
+}
+
+...
+
+
+Por último, es posible eliminar los datos registrados en la base de datos de forma irreversible, por lo que una vez eliminados, el usuario tendrá que volver a rellenar todos los campos requeridos en el registro.
+
 
 
 
