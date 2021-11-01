@@ -7,7 +7,7 @@ router.post("/",controller.CreateMovie) // Ruta para añadir peliculas en el bod
 
 router.get("/", controller.SearchMovieByTitle) // Buscar perlicula
 
-router.get("/", controller.SearchMovieById) // Buscar perlicula
+router.get("/:id", controller.SearchMovieById) // Buscar perlicula
 
 
 module.exports = router;

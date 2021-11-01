@@ -27,6 +27,6 @@ module.exports.SearchMovieByTitle = async (req,res)=>{
 // BUsqueda por ID
 
 module.exports.SearchMovieById = async (req,res)=>{
-const result = await MovieModels.find({_id: req.query.id})
+    const result = await MovieModels.find({_id: req.params.id})
     res.json(result);
 }

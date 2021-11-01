@@ -30,10 +30,24 @@ module.exports.LogIn = async (req,res)=>{
 }
 
 
+
+
+
 // Cambiar nombre de usuario
 
 module.exports.ChangeName = async (req,res)=>{
     try{
+        const changeName = await UserModels.find({_id: req.params.id})
+        if(changeName !== null){
+            changeName.name = req.body
+        }
+        await changeName.save()
+        res.send(changeName)
+    }catch{
+
+    }
+    
+    /*try{
         const newNAme = await UserModels.findOneAndReplace({name: req.body});
         if(newUser === null){
             res.send({result: "nombre no encontrado"})
@@ -41,9 +55,7 @@ module.exports.ChangeName = async (req,res)=>{
         res.send({newNAme})
     }catch{
         res.send({result:"not found"})
-    }
-    
-
+    }*/
 }
 
 

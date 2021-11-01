@@ -4,12 +4,15 @@ const controller = require("./UserController");
 
 
 
+
 router.post("/",controller.CreateUser) // Crear usuario
 
 router.get("/",controller.LogIn) // Logearse
 
 router.delete("/",controller.DeleteUser) // Eliminar usuario
 
-router.put("/",controller.ChangeName)
+router.put("/:id",controller.ChangeName)
+
+
 
 module.exports = router;
