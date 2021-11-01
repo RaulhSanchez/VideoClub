@@ -19,8 +19,7 @@ module.exports.CreateUser = async (req,res)=>{
 
 module.exports.LogIn = async (req,res)=>{
     try{
-        const compareMail = await UserModels.findOne({email: req.body.email, pasword:req.body.pasword})  
-        
+        const compareMail = await UserModels.findOne({email: req.body.email, pasword:req.body.pasword})   
         if(compareMail === null){
             res.send({result:"email o contraseña incorrecto"})
         }
@@ -29,6 +28,24 @@ module.exports.LogIn = async (req,res)=>{
         res.send({result:"not found"})
     }
 }
+
+
+// Cambiar nombre de usuario
+
+module.exports.ChangeName = async (req,res)=>{
+    try{
+        const newNAme = await UserModels.findOneAndReplace({name: req.body});
+        if(newUser === null){
+            res.send({result: "nombre no encontrado"})
+        }
+        res.send({newNAme})
+    }catch{
+        res.send({result:"not found"})
+    }
+    
+
+}
+
 
 
 // Eliminar usuario

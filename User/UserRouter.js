@@ -10,5 +10,6 @@ router.get("/",controller.LogIn) // Logearse
 
 router.delete("/",controller.DeleteUser) // Eliminar usuario
 
+router.put("/",controller.ChangeName)
 
 module.exports = router;
