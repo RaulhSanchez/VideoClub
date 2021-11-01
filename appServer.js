@@ -1,9 +1,9 @@
 const { Router } = require("express");
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 //const jwt = require("jsonwebtoken")
 const app=express();
-const userRouter = require("./User/UserRouter")
+const userRouter = require("./User/UserRouter");
 const movieRouter = require("./Movies/MovieRouter");
 
 //const res = require("express/lib/response");

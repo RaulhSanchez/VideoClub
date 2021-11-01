@@ -37,14 +37,11 @@ module.exports.LogIn = async (req,res)=>{
 
 module.exports.ChangeName = async (req,res)=>{
     try{
-        const changeName = await UserModels.find({_id: req.params.id})
-        if(changeName !== null){
-            changeName.name = req.body
-        }
-        await changeName.save()
-        res.send(changeName)
+        const changeName = await UserModels.findByIdAndUpdate({_id:req.params.id},{name:req.body.name});
+        console.log(changeName)
+        res.send("El nombre se ha cambiado");
     }catch{
-
+        res.send("error");
     }
     
     /*try{
