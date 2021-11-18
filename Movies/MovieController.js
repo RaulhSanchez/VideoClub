@@ -1,16 +1,18 @@
 // Funcion Completa
 
-const { query } = require("express");
-const { json } = require("express/lib/response");
 const MovieModels = require("./MovieModels");
 const model=require("./MovieModels")
 
 //Añadir peliculas en el body a la BBDD
 
 module.exports.CreateMovie = async (req,res)=>{
-    const movie = new model(req.body);
-    await movie.save();
-    res.json(movie);
+    try{
+        const movie = req.body
+        await MovieModels.create(movie);
+        res.json(movie);
+    }catch{
+        res.json({error:"erro"})
+    }
 }
 
 //Peliculas por titulo

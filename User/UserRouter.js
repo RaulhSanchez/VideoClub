@@ -1,18 +1,13 @@
-const router = require("express").Router(); // moddelwere para conectar rutas desde la app central
-const { route } = require("express/lib/application");
+const router = require("express").Router(); 
 const controller = require("./UserController");
+const jwt = require ("jsonwebtoken");
+const middleware = require("../Middleware/middleware");
 
-
-
-
-router.post("/",controller.CreateUser) // Crear usuario
-
-router.get("/",controller.LogIn) // Logearse
-
-router.delete("/",controller.DeleteUser) // Eliminar usuario
-
+router.get("/login",controller.login) // Logearse
+router.get("/:id", controller.SearchUser)//Buscar por ID
+router.post("/create",controller.CreateUser) // Crear usuario
+router.delete("/delete",controller.DeleteUser) // Eliminar usuario
 router.put("/:id",controller.ChangeName)
-
 
 
 module.exports = router;
