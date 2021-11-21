@@ -34,7 +34,7 @@ Tras esto la pelicula se guardara con .create(movie) en la base de datos si los 
 
 De no tener algo correcto entonces la función ira por el catch y mostrará que tenemos un error.
 
-![Postman] https://galactic-sunset-253797.postman.co/workspace/Peliculas~c25de9c3-6cc8-41a3-a249-4d3a3e170fe8/documentation/18036057-a66ed603-6e18-4fc1-b857-836f6f6636ed?entity=request-be4d24aa-97a3-450b-a1bb-f921f91ccbf2
+
 
 En el apartado de buscar película, en la URL, al escribir localhost:3000/movie se añaden en la query el title:"título de la pelicula" para acceder a una película concreta. Con esta parte del código conseguimos esto:
 
