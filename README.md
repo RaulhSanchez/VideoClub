@@ -11,58 +11,54 @@ Este proyecto es un Backend emulando el que puede tener una página como Netflix
 En el apartado de películas se puede desde añadir películas nuevas,acceder al catalogo completo de películas, buscar una pelicula concreta con su título o por ID.
 Además en caso de no encontrar la película deseada, aparecerán todas las disponibles.
 
-Para añadir una película concreta, el código que se ha usado es el siguiente:
+Para añadir una película concreta, el código que se ha usado es el siguiente
 
 
-...
 
 
-module.exports.CreateMovie = async (req,res)=>{
-    const movie = new model(req.body);
-    await movie.save();
-    res.json(movie);
-}
-
-...
 
 
-En el que desde el body, añadiendo los requisitos necesarios como el título, el director y genero, se añade automáticamente a la base de datos y al resto de películas.
+     try{
+        const movie = req.body
+        await MovieModels.create(movie);
+        res.json(movie);
+    }catch{
+        res.json({error:"erro"})
+    }
+
+
+
+En la primera parte del código creamos una constante que llamamos movie decimos que va a ser un nuevo modelo, al que en el body añadiremos los datos requereidos en el modelo.
+
+Tras esto la pelicula se guardara con .create(movie) en la base de datos si los datos añadidos son los requereidos en el modelo y la respuesta será la propia película añadida en caso de estar todo correcto.
+
+De no tener algo correcto entonces la función ira por el catch y mostrará que tenemos un error.
+
 
 
 En el apartado de buscar película, en la URL, al escribir localhost:3000/movie se añaden en la query el title:"título de la pelicula" para acceder a una película concreta. Con esta parte del código conseguimos esto:
 
 
 
-...
 
-
-//Peliculas por titulo
-
-module.exports.SearchMovieByTitle = async (req,res)=>{
     const query={};
     if(req.query.title)query.title = req.query.title;
     const rest = await model.find(query);
     res.json(rest);
-}
 
 
-...
 
 Es posible ralizar una busqueda de las películas por el ID de la base de datos como se muestra en el siguiente método:
 
-...
 
-module.exports.SearchMovieByTitle = async (req,res)=>{
+
     const query={};
     if(req.query.title)query.title = req.query.title;
     if(req.query.director)query.director = req.query.director;
     if(req.query.gender)query.gender = req.query.gender;
     const rest = await model.find(query);
     res.json(rest);
-}
 
-
-...
 
 
 ***
@@ -75,20 +71,15 @@ Es posible registrarse como nuevo usuario añadiendo los datos que se piden en e
 
 Para ello se ha utilizado el siguiente método:
 
-...
 
-
-module.exports.SearchMovieByTitle = async (req,res)=>{
     const query={};
     if(req.query.title)query.title = req.query.title;
     if(req.query.director)query.director = req.query.director;
     if(req.query.gender)query.gender = req.query.gender;
     const rest = await model.find(query);
     res.json(rest);
-}
 
 
-...
 
 Los datos requeridos en este caso son: 
 
@@ -100,10 +91,7 @@ Los datos requeridos en este caso son:
 
 Para la funcionalidad de cambiar el nombre, se requiere añadir el cambio por el body con el siguiente método:
 
-...
 
-
-module.exports.ChangeName = async (req,res)=>{
     try{
         const changeName = await UserModels.findByIdAndUpdate({_id:req.params.id},{name:req.body.name});
         console.log(changeName)
@@ -111,9 +99,6 @@ module.exports.ChangeName = async (req,res)=>{
     }catch{
         res.send("error");
     } 
-}
-
-...
 
 
 Por último, es posible eliminar los datos registrados en la base de datos de forma irreversible, por lo que una vez eliminados, el usuario tendrá que volver a rellenar todos los campos requeridos en el registro.
