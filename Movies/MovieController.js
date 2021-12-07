@@ -2,16 +2,20 @@
 
 const MovieModels = require("./MovieModels");
 const model=require("./MovieModels")
+const decryptUser = require("../Middleware/middleware")
 
 //Añadir peliculas en el body a la BBDD
 
 module.exports.CreateMovie = async (req,res)=>{
     try{
+        const user = decryptUser.decryptoken(req.headers.token)
         const movie = req.body
-        await MovieModels.create(movie);
-        res.json(movie);
+        if(user ){
+            await MovieModels.create(movie);
+            res.json({movie:movie});
+        }else{console.log("no estas registrado")}
     }catch{
-        res.json({error:"erro"})
+        res.json({error:"error"})
     }
 }
 

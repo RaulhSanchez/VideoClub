@@ -31,3 +31,11 @@ module.exports.VerifyToken = (req, res, next) => {
     } catch (error) { res.json({error: 'Acceso denegado.'})
     }
 }
+
+module.exports.decryptoken = (user) => {
+    let objectUser = jwt.decode(user)
+    console.log(objectUser)
+    console.log(objectUser+ 'decri')
+    return objectUser
+}
+  
